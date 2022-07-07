@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue with Buefy UI Components</title>
+    <link rel="stylesheet" href="./styles/materialdesignicons.min.css">
+    <link rel="stylesheet" href="./styles/buefy.min.css">
+
+
+</head>
+
+<body>
+    <div id="app">
+        <section class="section">
+            <div class="container">
+                <h1 class="title">
+                    Hello!
+                </h1>
+                <p class="subtitle">
+                    My first website with <strong>Beufy</strong>!
+                </p>
+
+                <b-field grouped :type="typeMsg" :message="stateMessage">
+                    <b-input v-model="endpoint" placeholder="Enter WS endpoint" icon-right="." :disabled="isDisabled"></b-input>
+                    <b-switch v-model="isConnected" :type="typeMsg" :disabled="isDisabled">
+                        {{ isConnected ? (isDisabled? "Connecting..." : "Disconnect") : "Connect"}}
+                    </b-switch>
+                </b-field>
+
+                <b-field>
+                   
+                    <b-input v-model="param1" type="number" placeholder="0,00" :disabled="sendDisabled"></b-input>
+                    <b-input v-model="param2" type="number" placeholder="0,00" :disabled="sendDisabled"></b-input>
+                    <b-select v-model="method" placeholder="Method" :disabled="sendDisabled">
+                        <option>sum</option>
+                        <option>mul</option>
+                    </b-select>
+                    <p class="control">
+                        <b-button @click="sendMessage" type="is-success" label="Send" :disabled="sendDisabled" />
+                    </p>
+                </b-field>
+
+
+                <b-field label="Message log">
+                    <b-input ref="logArea" v-model="log" type="textarea" readonly></b-input>
+                </b-field>
+                <b-field >
+                    <p class="control">
+                        <b-button @click="log='';" label="Clear" type="is-warning" />
+                    </p>
+                </b-field>
+            </div>
+        </section>
+    </div>
+
+    <script src="./modules/vue.js"></script>
+    <script src="./modules/buefy.min.js"></script>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
